@@ -19,16 +19,10 @@ if test -f /data/check-for-shared-with-data; then
 fi
 rm -f /app/check-for-shared-with-data
 
-# Optionally download the app
-cd /app
-if test ! -d RoonServer; then
-    if test -z "$ROON_SERVER_URL" -o -z "$ROON_SERVER_PKG"; then
-	echo "Missing URL ROON_SERVER_URL and/or app name ROON_SERVER_PKG"
-	exit 1
-    fi
-    curl -L $ROON_SERVER_URL -O
-    tar xjf $ROON_SERVER_PKG
-    rm -f $ROON_SERVER_PKG
+# 如果 /app 是空的，将构建时的文件复制过去
+if [ -z "$(ls -A /app)" ]; then
+    echo "Initializing /app from pre-built data..."
+    cp -r /tmp/roonserver/* /app/
 fi
 
 # Run the app
@@ -36,4 +30,4 @@ if test -z "$ROON_DATAROOT" -o -z "$ROON_ID_DIR"; then
     echo "Dataroot ROON_DATAROOT and/or ID dir ROON_ID_DIR not set"
     exit 1
 fi
-/app/RoonServer/start.sh
+/app/RoonServer/start.sh  
