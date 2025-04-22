@@ -1,6 +1,18 @@
 # docker-roonserver
-update:Stop using docker network downloads, please directly copy files to the same directory as Dockerfile to create an image.  
+Update（2025.04.22） : Stop using docker network downloads, please directly copy files to the same directory as Dockerfile to create an image.  
 RoonServer without downloading Roon on first run , you need RoonServer_linuxx64.tar.bz2
+
+There are a few things to emphasize:
+1. You need to prepare the RoonServer_linuxx64.tar.bz2 file and place it in the same directory as dockerfile and run.sh, then use `docker -t roonserver:latest .` to build an image
+
+2. When creating a container, you need to set up several directories (`/app`, `/data/`, `/backup/`, `/music/`), where music is mapped to your music directory.
+
+3. Use `host` for the network when creating the container
+
+4. Connect using the corresponding Roon program and set the music folder.
+
+
+----------
 
 Example start:
 
@@ -131,8 +143,6 @@ I have not tried this myself, I do not use Roon extensions.
   Steef
 
 ## Version history
-  * 2025-04-22: Stop using docker network downloads, please directly copy files to the same directory as Dockerfile to create an image. 
-
   * 2023-11-03: update base image to 'debian:12-slim', dependency to libicu72
   * 2022-04-12: update base image to 'debian:11-slim'
   * 2022-03-19: Fix download URL, follow redirects on download. Added specific usage scenarios in README.
