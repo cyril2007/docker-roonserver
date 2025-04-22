@@ -4,9 +4,9 @@ Stop using docker network downloads, please directly copy files to the same dire
 RoonServer without downloading Roon on first run , you need RoonServer_linuxx64.tar.bz2
 
 There are a few things to emphasize:
-1. You need to prepare the RoonServer_linuxx64.tar.bz2 file and place it in the same directory as dockerfile and run.sh, then use `docker -t roonserver:latest .` to build an image
+1. You need to prepare the RoonServer_linuxx64.tar.bz2 file and place it in the same directory as dockerfile and run.sh, then use `docker build -t roonserver:latest .` to build an image
 
-2. When creating a container, you need to set up several directories (`/app`, `/data/`, `/backup/`, `/music/`), where music is mapped to your music directory.
+2. When creating a container, you need to set up several directories (`/app/`, `/data/`, `/backup/`, `/music/`), where music is mapped to your music directory.
 
 3. Use `host` for the network when creating the container
 
@@ -14,7 +14,7 @@ There are a few things to emphasize:
    
 
 
-## ReadMe.md
+# 原始ReadMe.md
 ----------
 
 Example start:
