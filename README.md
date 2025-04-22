@@ -1,8 +1,6 @@
 # docker-roonserver
-RoonServer downloading Roon on first run
-
-This little project configures a docker image for running RoonServer.
-It downloads RoonServer if not found on an external volume.
+update:Stop using docker network downloads, please directly copy files to the same directory as Dockerfile to create an image.  
+RoonServer without downloading Roon on first run , you need RoonServer_linuxx64.tar.bz2
 
 Example start:
 
@@ -133,6 +131,7 @@ I have not tried this myself, I do not use Roon extensions.
   Steef
 
 ## Version history
+  * 2025-04-22: Stop using docker network downloads, please directly copy files to the same directory as Dockerfile to create an image. 
 
   * 2023-11-03: update base image to 'debian:12-slim', dependency to libicu72
   * 2022-04-12: update base image to 'debian:11-slim'
