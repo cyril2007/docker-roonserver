@@ -18,6 +18,6 @@ RUN tar -xjf /tmp/roonserver/RoonServer_linuxx64.tar.bz2 -C /tmp/roonserver \
 
 # 复制启动脚本
 COPY run.sh /run.sh
-RUN chmod +x /run.sh
+RUN sed -i 's/\r$//' /run.sh && chmod +x /run.sh
 
 ENTRYPOINT ["/run.sh"]
